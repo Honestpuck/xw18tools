@@ -16,20 +16,19 @@ def non_compliance(rec, reason):
     printf("%s\t%s", name, reason)
 
 
-    # new way
-    for record in computer_list:
-        computer = record.retrieve()
-        attribute = tools.attributes(computer)
-        if attribute['SIP Status'] == 'disabled':
-            non_compliance(computer, 'SIP status')
-            break
-        if attribute['Carbon Black Running'] in ['disabled', 'missing']:
-            non_compliance(computer, 'Carbon Black')
-            break
-        if attribute['Internet Sharing'] == 'Enabled':
-            non_compliance(computer, 'Internet Sharing')
-            break
-
+# new way
+for record in computer_list:
+    computer = record.retrieve()
+    attribute = tools.attributes(computer)
+    if attribute['SIP Status']['value'] == 'disabled':
+        non_compliance(computer, 'SIP status')
+        break
+    if attribute['Carbon Black Running']['value'] in ['disabled', 'missing']:
+        non_compliance(computer, 'Carbon Black')
+        break
+    if attribute['Internet Sharing']['value'] == 'Enabled':
+        non_compliance(computer, 'Internet Sharing')
+        break
 
 # more examples
 
