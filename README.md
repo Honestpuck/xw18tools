@@ -16,7 +16,7 @@ Another real world example. This is what I used to sanitise the JSS data so I co
 
 ### target.py
 
-An example Webhook target in Flash. It updates an extension attribute when
+An example Webhook target in Flask. It updates an extension attribute when
 a computer joins or leaves a smart group.
 
 ### target2.py

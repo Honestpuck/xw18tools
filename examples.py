@@ -3,7 +3,7 @@
 import jss_tools as tools
 import sys
 
-jss = tools.Jopn(True)
+jss = tools.Jopen(True)
 
 
 def printf(format, *args):
@@ -18,6 +18,25 @@ def non_compliance(rec, reason):
     printf("%s\t%s", name, reason)
 
 
+# old way
+for computer in computer_list:
+    this_computer = computer.retrieve()
+    for attribute in this_computer.findall(
+            'extension_attributes/extension_attribute'):
+        # attributes for security compliance
+        if attribute.findtext('name') == 'SIP status':
+            if attribute.findtext('value') == 'disabled':
+                o_non_comliance(this_computer, 'SIP status')
+                break
+        if attribute.findtext('name') == 'Virus Running':
+            if attribute.findtext('value') in ['disabled', 'missing']:
+                o_non_compliance(this_computer, 'Virus')
+            break
+        if attribute.findtext('name') == 'Internet Sharing':
+            if attribute.findtext('value') == 'Enabled':
+                o_non_compliance(this_computer, 'Internet Sharing')
+            break
+
 # new way
 for record in computer_list:
     computer = record.retrieve()
@@ -25,8 +44,8 @@ for record in computer_list:
     if attribute['SIP Status']['value'] == 'disabled':
         non_compliance(computer, 'SIP status')
         break
-    if attribute['Carbon Black Running']['value'] in ['disabled', 'missing']:
-        non_compliance(computer, 'Carbon Black')
+    if attribute['Virus Running']['value'] in ['disabled', 'missing']:
+        non_compliance(computer, 'Virus')
         break
     if attribute['Internet Sharing']['value'] == 'Enabled':
         non_compliance(computer, 'Internet Sharing')
@@ -39,8 +58,8 @@ for record in computer_list:
     if not attribute['SIP Disabled']['value']:
         non_compliance(computer, 'SIP status')
         break
-    if not attribute['Carbon Black Running']['value']:
-        non_compliance(computer, 'Carbon Black')
+    if not attribute['Virus Running']['value']:
+        non_compliance(computer, 'Virus')
         break
     if not attribute['Internet Sharing Disabled']:
         non_compliance(computer, 'Internet Sharing')
