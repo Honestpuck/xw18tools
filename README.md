@@ -28,11 +28,10 @@ contains the logic and code to send it.
 ### XWorld2018.key
 
 The presentation.
-
 ### Some Useful Links
 
 - [python-jss](https://github.com/jssimporter/python-jss) for the ground floor.
 - [jss_tools](https://github.com/Honestpuck/jss_tools) My tools.
 - [Webhooks](http://developer.jamf.com/webhooks) documentation from JAMF.
 - [Example-JSS-Webhooks](https://github.com/brysontyrrell/Example-JSS-Webhooks) from Bryson Tyrell.
-- [Jook](https://github.com/brysontyrrell/Jook) Etremely useful webhook simulator from Bryson
+- [Jook](https://github.com/brysontyrrell/Jook) Extremely useful webhook simulator from Bryson
