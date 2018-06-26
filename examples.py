@@ -3,6 +3,8 @@
 import jss_tools as tools
 import sys
 
+jss = tools.Jopn(True)
+
 
 def printf(format, *args):
     sys.stdout.write(format % args)
@@ -16,7 +18,6 @@ def non_compliance(rec, reason):
     printf("%s\t%s", name, reason)
 
 
-# new way
 for record in computer_list:
     computer = record.retrieve()
     attribute = tools.attributes(computer)
@@ -40,7 +41,6 @@ for mac in c_group['computers']:
            ii['email'], ii['os'], ii['os_build'])
 
 # check an attribute
-
 for computer in jss.Computer():
     mac = computer.retrieve()
     attribs = tools.c_attributes(mac)

@@ -1,0 +1,17 @@
+{
+    "event": {
+        "computer": true,
+        "groupAddedDevicesIds":
+        [1,2,3,4,5],
+        "groupRemovedDevicesIds":
+        [6,7,8,9,10],
+        "jssid": 8,
+        "name": "XWorld Demo SG",
+        "smartGroup": true
+    },
+    "webhook": {
+        "id": 7,
+        "name": "XWorld 2018 Demo Hook",
+        "webhookEvent": "SmartGroupComputerMembershipChange"
+    }
+}
