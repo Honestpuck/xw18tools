@@ -18,6 +18,7 @@ def non_compliance(rec, reason):
     printf("%s\t%s", name, reason)
 
 
+# new way
 for record in computer_list:
     computer = record.retrieve()
     attribute = tools.attributes(computer)
@@ -28,6 +29,20 @@ for record in computer_list:
         non_compliance(computer, 'Carbon Black')
         break
     if attribute['Internet Sharing']['value'] == 'Enabled':
+        non_compliance(computer, 'Internet Sharing')
+        break
+
+# new way with EAs now supporting boolean types
+for record in computer_list:
+    computer = record.retrieve()
+    attribute = tools.attributes(computer)
+    if not attribute['SIP Disabled']['value']:
+        non_compliance(computer, 'SIP status')
+        break
+    if not attribute['Carbon Black Running']['value']:
+        non_compliance(computer, 'Carbon Black')
+        break
+    if not attribute['Internet Sharing Disabled']:
         non_compliance(computer, 'Internet Sharing')
         break
 
