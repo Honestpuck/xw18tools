@@ -2,9 +2,7 @@ import flask
 import jss_tools as tools
 from threading import Thread
 
-
 app = flask.Flask(__name__)
-
 
 @app.route('/XWDemo', methods=['POST'])
 def membership_changed():
@@ -16,7 +14,7 @@ def membership_changed():
 
 
 def XWDemo(data)
-    thr = Thread(target=XWDemo, args=[data])
+    thr = Thread(target=XWDemo_thread, args=[data])
     thr.start()
 
 
@@ -32,6 +30,7 @@ def XWDemo_thread(data):
         attrs = tools.c_attributes(computer)
         attrs['XWDemoDate'] = ''
         c_attributes_write(attrs, computer)
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', debug=True)
